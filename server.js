@@ -26,6 +26,11 @@ wss.on('connection', function(ws) {
     current_users.push(new_user);
     ws.send(new_user, function() {  });
 
+    wss.broadcast = function(new_user) {
+        for(var i in this.clients)
+            this.clients[i].send(new_user);
+    };
+
     ws.on('message', function(data, flags) {
         // flags.binary will be set if a binary data is received
         // flags.masked will be set if the data was masked
