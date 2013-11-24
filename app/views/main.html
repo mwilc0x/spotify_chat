@@ -1,0 +1,14 @@
+<div class="jumbotron">
+    <ul id="chat-log" class="list-group">
+        <li class="list-group-item" ng-repeat="message in messages">{{message.name}} - {{message.text}}</li>
+    </ul>
+    <form id="submitForm" ng-submit="submit()">
+        <input chatlog x-ng-focus="chatInputFocused" ng-focus-lost="loseFocus()" type="text" id="chat-input" ng-model="text" name="text" />
+        <input type="submit" id="chat-submit" value="Submit" />
+    </form>
+</div>
+<div class="user-list">
+    <ul id="user_list" class="list-group">
+        <li class="list-group-item" ng-repeat="user in current_users">{{user.name}}</li>
+    </ul>
+</div>
