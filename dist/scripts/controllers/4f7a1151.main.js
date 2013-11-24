@@ -52,6 +52,7 @@
                     case 0: // user information
                         $scope.user = server_response;
                         $scope.current_users.push(server_response);
+                        console.log("new user joined");
                         break;
                     case 1: // song information
                         if($scope.audio != null) {
