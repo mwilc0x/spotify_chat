@@ -18,23 +18,31 @@ console.log('http server listening on %d', port);
 var wss = new WebSocketServer({server: server});
 console.log('websocket server created');
 
+wss.broadcast = function(new_user) {
+    for(var i in this.clients) {
+        this.clients[i].send(new_user);
+    }
+};
+
 var current_users = [{name: "Bot"}];
 
 wss.on('connection', function(ws) {
     console.log('websocket connection open');
+
     var new_user = JSON.stringify({data: 0, name: "Guest", id: 1});
     current_users.push(new_user);
-    ws.send(new_user, function() {  });
+    //ws.send(new_user, function() {  });
 
-    wss.broadcast = function(new_user) {
-        for(var i in this.clients)
-            this.clients[i].send(new_user);
-    };
+    wss.broadcast(new_user);
 
     ws.on('message', function(data, flags) {
         // flags.binary will be set if a binary data is received
         // flags.masked will be set if the data was masked
-        console.log('Got message ' + data);
+        //console.log('Got message ' + data);
+        var message = JSON.parse(data);
+
+        console.log('Got message ' + message.text + " with data type: " + message.data);
+        //wss.broadcast(data);
 
         function getSpotifyURI(search) {
             spotifysearch.search({ type: 'track', query: search }, function(err, data) {
@@ -43,16 +51,23 @@ wss.on('connection', function(ws) {
                     return;
                 }
 
-                console.log(search + " coming right up!")
                 if(data != null && data.tracks != null && data.tracks[0] != null
                     && data.tracks[0].href != null) {
-                    var track = JSON.stringify({data: 1, song: data.tracks[0].href });
-                    ws.send(track, function() {  });
+                    console.log(search + " coming right up!")
+                    var track = JSON.stringify({data: 1, song: data.tracks[0].href, user: message.user });
+                    wss.broadcast(track);
                 }
             });
         }
 
-        getSpotifyURI(data);
+        switch(message.data) {
+            case 1:
+                getSpotifyURI(message.text);
+                break;
+            case 2:
+                wss.broadcast(data);
+                break;
+        }
     });
 
     ws.on('close', function() {

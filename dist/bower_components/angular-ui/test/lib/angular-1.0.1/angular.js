@@ -5262,7 +5262,7 @@ function locationGetterSetter(property, preprocess) {
  * - Represents the URL object as a set of methods (protocol, host, port, path, search, hash).
  *
  * For more information see {@link guide/dev_guide.services.$location Developer Guide: Angular
- * Services: Using $location}
+ * services: Using $location}
  */
 
 /**
