@@ -3,7 +3,7 @@ spotify_chat
 
 real time chat and spotify streaming using node, websockets, angularjs and html5 audio
 
-run
+Running locally
 ===
 
 Right now I have it setup so that you need a spotify premium account to run. If you do you'll have to
