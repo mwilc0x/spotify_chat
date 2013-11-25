@@ -1,0 +1,93 @@
+html {
+    height: 100%;
+}
+body {
+    background: #fafafa;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333;
+    height: 100%;
+}
+
+.hero-unit {
+    margin: 50px auto 0 auto;
+    width: 300px;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 30px;
+    background-color: #eee;
+    border-radius: 6px;
+    padding: 60px;
+}
+
+.hero-unit h1 {
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.container, .jumbotron {
+    height: 100%;
+}
+
+.jumbotron {
+    position: absolute;
+    left: 0;
+    width: 80%;
+    border-radius: 0;
+}
+
+.user-list {
+    position: absolute;
+    right: 0;
+    width: 20%;
+    border-radius: 0;
+}
+
+#submitForm {
+    position:inherit;
+    bottom:0;
+    left: 0;
+    width: 100%;
+}
+
+#chat-input {
+    width: 90%;
+}
+
+#chat-submit {
+    width: 9%;
+}
+
+ul#chat-log {
+    list-style-type: none;
+    padding: 0;
+    position:inherit;
+    width: 100%;
+    top:0;
+    left:0;
+}
+
+.modal {
+    display: table;
+    height: 0;
+    overflow: visible;
+}
+.modal.fade.in {
+    display: table;
+}
+
+.modal-dialog {
+    position:relative;
+    left:335px;
+    top: 145px;
+}
+.modal-body:before,
+.modal-body:after {
+    display: table;
+    content: " ";
+}
+.modal-header:before,
+.modal-header:after {
+    display: table;
+    content: " ";
+}
