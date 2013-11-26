@@ -73,7 +73,7 @@ wss.on('connection', function(ws) {
 });
 
 
-Spotify.login("mot0rola", "G3tSm4rt", function (err, spotify) {
+Spotify.login("USERNAME", "PASSWORD", function (err, spotify) {
     console.log("Spotify connected");
 
     if (err) throw err;
