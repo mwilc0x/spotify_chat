@@ -10,6 +10,7 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
     }];
     $scope.chat_history = [{ text: "" }];
     $scope.chat_history_index = -1;
+    $scope.loggedIn = false;
 
     $scope.chatInputFocused = false;
 
@@ -40,7 +41,11 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
     };
 
     function onUserJoined(user) {
-        $scope.user = user;
+        if(!$scope.loggedIn){
+            $scope.user = user;
+            $scope.loggedIn = true;
+        }
+
         $scope.current_users.push(user);
         $log.log("new user joined");
         $scope.$apply();
