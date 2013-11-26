@@ -62,9 +62,13 @@ ul#chat-log {
     list-style-type: none;
     padding: 0;
     position:inherit;
+    height: 92%;
     width: 100%;
     top:0;
     left:0;
+    max-height: 92%;
+    overflow-x: hidden;
+    overflow-y:auto;
 }
 
 .modal {
