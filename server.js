@@ -31,18 +31,15 @@ wss.on('connection', function(ws) {
 
     var new_user = JSON.stringify({data: 0, name: "Guest", id: 1});
     current_users.push(new_user);
-    //ws.send(new_user, function() {  });
 
     wss.broadcast(new_user);
 
     ws.on('message', function(data, flags) {
         // flags.binary will be set if a binary data is received
         // flags.masked will be set if the data was masked
-        //console.log('Got message ' + data);
         var message = JSON.parse(data);
 
         console.log('Got message ' + message.text + " with data type: " + message.data);
-        //wss.broadcast(data);
 
         function getSpotifyURI(search) {
             spotifysearch.search({ type: 'track', query: search }, function(err, data) {
@@ -76,7 +73,7 @@ wss.on('connection', function(ws) {
 });
 
 
-Spotify.login("YOUR_USERNAME", "YOUR_PASSWORD", function (err, spotify) {
+Spotify.login("mot0rola", "G3tSm4rt", function (err, spotify) {
     console.log("Spotify connected");
 
     if (err) throw err;
