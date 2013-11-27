@@ -60,6 +60,16 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
         $scope.$apply();
     }
 
+    function onUserLeft(user) {
+        for (var i = 0; i < $scope.current_users.users.length; i++) {
+            if ($scope.current_users.users[i].id == user.id) {
+                $scope.current_users.users.splice(i,1);
+                break;
+            }
+        }
+        $scope.$apply();
+    }
+
     function onSongRequested(songRequest) {
         $log.log("in audio case song: " + songRequest.song + " user: " + songRequest.user);
         audio.play("/audio/" + songRequest.song);
@@ -85,6 +95,7 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
 
     $scope.$on('userList', function (evt, users) { onUserList(users); });
     $scope.$on('userJoined', function (evt, user) { onUserJoined(user); });
+    $scope.$on('userLeft', function (evt, user) { onUserLeft(user); });
     $scope.$on('songRequested', function (evt, songRequest) { onSongRequested(songRequest); });
     $scope.$on('chatMessageReceived', function (evt, message) { onChatMessageReceived(message); });
     $scope.$on('userUpdatedInfo', function (evt, user) { onUserUpdatedInfo(user); })
