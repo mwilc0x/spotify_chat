@@ -24,13 +24,16 @@ wss.broadcast = function(new_user) {
     }
 };
 
-var current_users = [{name: "Bot"}];
+var current_users = {data: 0, users: [{ name: "Bot", id: 0 }]};
 
 wss.on('connection', function(ws) {
     console.log('websocket connection open');
 
+    var foo = this;
+    console.log('saved connection');
+
     var new_user = JSON.stringify({data: 0, name: "Guest", id: Math.floor(Math.random()*90000) + 10000});
-    current_users.push(new_user);
+    current_users.users.push(new_user);
 
     wss.broadcast(new_user);
 
