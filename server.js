@@ -24,7 +24,7 @@ wss.broadcast = function(new_user) {
     }
 };
 
-var current_users = {data: 0, users: [{ name: "Bot", id: 0 }]};
+var current_users = {data: 0, users: [{ data: 0, name: "Bot", id: 0 }]};
 var users_websockets_and_ids = [{id: 0, ws: ""}];
 
 wss.on('connection', function(ws) {
@@ -32,13 +32,14 @@ wss.on('connection', function(ws) {
 
     var id = Math.floor(Math.random()*90000) + 10000;
 
-    var new_user = JSON.stringify({data: 0, name: "Guest", id: id});
+    var new_user = {data: 0, name: "Guest", id: id};
     
     // send full user list to client first time connect
     ws.send(JSON.stringify({data: "user-list", users: current_users}));
-    current_users.push(new_user);
+    current_users.users.push(new_user);
     
     // broadcast that new user joined to everyone
+    new_user = JSON.stringify(new_user);
     wss.broadcast(new_user);
     
     // keep a record of user id and websocket object on server
@@ -76,6 +77,12 @@ wss.on('connection', function(ws) {
                 wss.broadcast(data);
                 break;
             case 3:
+                for(var i = 0; i < current_users.users.length; i++) {
+                    if(current_users.users[i].id == message.id) {
+                        current_users.users[i].name = message.name;
+                        break;
+                    }
+                }
                 wss.broadcast(data);
         }
     });
@@ -85,7 +92,7 @@ wss.on('connection', function(ws) {
             if(users_websockets_and_ids[j].id == id) {
                 delete users_websockets_and_ids[j].ws;
                 users_websockets_and_ids.splice(j,1);
-                current_users.splice(j,1);
+                current_users.users.splice(j,1);
                 wss.broadcast(JSON.stringify({data: "delete-user", id: id}));
                 break;
             }
