@@ -10,6 +10,9 @@ app.service('chatService', function ($rootScope, $location) {
         var server_response = JSON.parse(event.data);
         if (server_response != null && server_response.data != null) {
             switch (server_response.data) {
+                case "user-list": // users in chat
+                    $rootScope.$broadcast('userList', server_response);
+                    break;
                 case 0: // user information
                     $rootScope.$broadcast('userJoined', server_response);
                     break;
