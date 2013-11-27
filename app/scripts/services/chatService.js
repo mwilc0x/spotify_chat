@@ -30,7 +30,15 @@ app.service('chatService', function ($rootScope, $location) {
         ws.send(message);
     }
 
+    function scrollDown() {
+        var objDiv = document.getElementById("chat-log");
+        objDiv.scrollTop = objDiv.scrollHeight;
+
+        objDiv.hei
+    }
+
     return {
-        send: send
+        send: send,
+        scroll: scrollDown
     };
 })
