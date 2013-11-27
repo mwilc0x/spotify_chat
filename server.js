@@ -25,7 +25,7 @@ wss.broadcast = function(new_user) {
 };
 
 var current_users = [{name: "Bot", id: 0 }];
-var users_sockets_ids = [];
+var users_websockets_and_ids = [{id: 0, ws: ""}];
 
 wss.on('connection', function(ws) {
     console.log('websocket connection open');
@@ -80,6 +80,16 @@ wss.on('connection', function(ws) {
     });
 
     ws.on('close', function() {
+        for(var j = 0; j < users_websockets_and_ids.length; j++) {
+            if(users_websockets_and_ids[j].id == id) {
+                delete users_websockets_and_ids[j].ws;
+                users_websockets_and_ids.splice(j,1);
+                current_users.splice(j,1);
+                wss.broadcast(JSON.stringify({data: "delete-user", id: id}));
+                break;
+            }
+        }
+        
         console.log('websocket connection close');
     });
 });
