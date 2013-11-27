@@ -29,6 +29,7 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
             for (var i = 0; i < $scope.current_users.users.length; i++) {
                 if ($scope.current_users.users[i].id == $scope.user.id) {
                     $scope.current_users.users[i].name = nickname;
+                    break;
                 }
             }
 
@@ -88,6 +89,7 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
         for (var i = 0; i < $scope.current_users.users.length; i++) {
             if ($scope.current_users.users[i].id == user.id) {
                 $scope.current_users.users[i].name = user.name;
+                break;
             }
         }
         $scope.$apply();
