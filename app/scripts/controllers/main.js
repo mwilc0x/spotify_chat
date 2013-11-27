@@ -2,7 +2,7 @@
 
 app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, chatService, audio) {
     $scope.user = {};
-    $scope.current_users = [{ data: 0, name: "Bot", id: 0 }];
+    $scope.current_users = { data: 0, users: []};
     $scope.text = "";
     $scope.messages = [{
         name: "Bot",
@@ -26,9 +26,9 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
         });
 
         modalInstance.result.then(function (nickname) {
-            for (var i = 0; i < $scope.current_users.length; i++) {
-                if ($scope.current_users[i].id == $scope.user.id) {
-                    $scope.current_users[i].name = nickname;
+            for (var i = 0; i < $scope.current_users.users.length; i++) {
+                if ($scope.current_users.users[i].id == $scope.user.id) {
+                    $scope.current_users.users[i].name = nickname;
                 }
             }
 
@@ -44,13 +44,18 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
         });
     };
 
+    function onUserList(users) {
+        $scope.current_users = users.users;
+        $scope.$apply();
+    }
+
     function onUserJoined(user) {
         if(!$scope.loggedIn){
             $scope.user = user;
             $scope.loggedIn = true;
         }
 
-        $scope.current_users.push(user);
+        $scope.current_users.users.push(user);
         $log.log("new user joined");
         $scope.$apply();
     }
@@ -70,14 +75,15 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
     }
 
     function onUserUpdatedInfo(user) {
-        for (var i = 0; i < $scope.current_users.length; i++) {
-            if ($scope.current_users[i].id == user.id) {
-                $scope.current_users[i].name = user.name;
+        for (var i = 0; i < $scope.current_users.users.length; i++) {
+            if ($scope.current_users.users[i].id == user.id) {
+                $scope.current_users.users[i].name = user.name;
             }
         }
         $scope.$apply();
     }
 
+    $scope.$on('userList', function (evt, users) { onUserList(users); });
     $scope.$on('userJoined', function (evt, user) { onUserJoined(user); });
     $scope.$on('songRequested', function (evt, songRequest) { onSongRequested(songRequest); });
     $scope.$on('chatMessageReceived', function (evt, message) { onChatMessageReceived(message); });
