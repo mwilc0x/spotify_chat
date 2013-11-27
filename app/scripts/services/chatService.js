@@ -19,6 +19,8 @@ app.service('chatService', function ($rootScope, $location) {
                 case 2: // chat message
                     $rootScope.$broadcast('chatMessageReceived', server_response);
                     break;
+                case 3: // user info change
+                    $rootScope.$broadcast('userUpdatedInfo', server_response);
             }
         }
     };
