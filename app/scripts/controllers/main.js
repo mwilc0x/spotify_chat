@@ -66,6 +66,7 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
     function onChatMessageReceived(message) {
         $scope.messages.push({ name: message.user, text: message.text });
         $scope.$apply();
+        chatService.scroll();
     }
 
     function onUserUpdatedInfo(user) {
