@@ -24,16 +24,26 @@ wss.broadcast = function(new_user) {
     }
 };
 
-var current_users = [{name: "Bot"}];
+var current_users = [{name: "Bot", id: 0 }];
+var users_sockets_ids = [];
 
 wss.on('connection', function(ws) {
     console.log('websocket connection open');
 
-    var new_user = JSON.stringify({data: 0, name: "Guest", id: Math.floor(Math.random()*90000) + 10000});
+    var id = Math.floor(Math.random()*90000) + 10000;
+    
+    // send full user list to client first time connect
+    ws.send(JSON.stringify({data: "user-list", users: current_users)});
     current_users.push(new_user);
-
+    
+    // broadcast that new user joined to everyone
+    var new_user = JSON.stringify({data: 0, name: "Guest", id: id});
     wss.broadcast(new_user);
-
+    
+    // keep a record of user id and websocket object on server
+    var user_websocket_id = {id: id, ws: ws};
+    users_sockets_ids.push(user_websocket_id);
+    
     ws.on('message', function(data, flags) {
         // flags.binary will be set if a binary data is received
         // flags.masked will be set if the data was masked
