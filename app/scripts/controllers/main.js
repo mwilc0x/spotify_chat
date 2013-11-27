@@ -6,7 +6,7 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
     $scope.text = "";
     $scope.messages = [{
         name: "Bot",
-        text: 'Welcome! To play a song, type !spotify song or artist'
+        text: 'Welcome! To play a song, type "bot play song or artist"'
     }];
     $scope.chat_history = [{ text: "" }];
     $scope.chat_history_index = -1;
@@ -74,7 +74,7 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
     function onSongRequested(songRequest) {
         $log.log("in audio case song: " + songRequest.song + " user: " + songRequest.user);
         audio.play("/audio/" + songRequest.song);
-        $scope.messages.push({ name: songRequest.user, text: songRequest.song });
+        $scope.messages.push({ name: songRequest.user, text: songRequest.display });
         $log.log("audio started");
         $scope.$apply();
     }
