@@ -84,6 +84,7 @@ wss.on('connection', function(ws) {
                     }
                 }
                 wss.broadcast(data);
+                break;
         }
     });
 
