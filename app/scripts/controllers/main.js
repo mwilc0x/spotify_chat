@@ -32,6 +32,10 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
                 }
             }
 
+            // broadcast nick change to server and everyone in chat room
+            var message = JSON.stringify({ data: 3, name: nickname, id: $scope.user.id });
+            chatService.send(message);
+
             $scope.chatInputFocused = true;
 
             $scope.user.name = nickname;
@@ -64,9 +68,19 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
         $scope.$apply();
     }
 
+    function onUserUpdatedInfo(user) {
+        for (var i = 0; i < $scope.current_users.length; i++) {
+            if ($scope.current_users[i].id == user.id) {
+                $scope.current_users[i].name = user.name;
+            }
+        }
+        $scope.$apply();
+    }
+
     $scope.$on('userJoined', function (evt, user) { onUserJoined(user); });
     $scope.$on('songRequested', function (evt, songRequest) { onSongRequested(songRequest); });
     $scope.$on('chatMessageReceived', function (evt, message) { onChatMessageReceived(message); });
+    $scope.$on('userUpdatedInfo', function (evt, user) { onUserUpdatedInfo(user); })
 
     $scope.submit = function () {
         if (this.text) {
