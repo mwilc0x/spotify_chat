@@ -60,8 +60,14 @@ wss.on('connection', function(ws) {
 
                 if(data != null && data.tracks != null && data.tracks[0] != null
                     && data.tracks[0].href != null) {
+
+                    var logout = JSON.stringify(data.tracks[0]);
+                    console.log("results: " + logout);
+
+                    var displayStr = "Now playing " + data.tracks[0].artists[0].name + " - " + data.tracks[0].name + " (" + data.tracks[0].album.released + " )";
+
                     console.log(search + " coming right up!")
-                    var track = JSON.stringify({data: 1, song: data.tracks[0].href, user: message.user });
+                    var track = JSON.stringify({data: 1, song: data.tracks[0].href, user: message.user, display: displayStr});
                     wss.broadcast(track);
                 }
             });
@@ -102,7 +108,7 @@ wss.on('connection', function(ws) {
 });
 
 
-Spotify.login("USERNAME", "PASSWORD", function (err, spotify) {
+Spotify.login("USERNAME","PASSWORD", function (err, spotify) {
     console.log("Spotify connected");
 
     if (err) throw err;
