@@ -51,8 +51,6 @@ wss.on('connection', function(ws) {
         // flags.masked will be set if the data was masked
         var message = JSON.parse(data);
 
-        console.log('Got message ' + message.text + " with data type: " + message.data);
-
         function getSpotifyURI(search) {
             spotifysearch.search({ type: 'track', query: search }, function(err, data) {
                 if ( err ) {
