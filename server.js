@@ -25,18 +25,26 @@ wss.broadcast = function(new_user) {
 };
 
 var current_users = {data: 0, users: [{ name: "Bot", id: 0 }]};
+var users_websockets_and_ids = [{id: 0, ws: ""}];
 
 wss.on('connection', function(ws) {
     console.log('websocket connection open');
 
-    var foo = this;
-    console.log('saved connection');
+    var id = Math.floor(Math.random()*90000) + 10000;
 
-    var new_user = JSON.stringify({data: 0, name: "Guest", id: Math.floor(Math.random()*90000) + 10000});
-    current_users.users.push(new_user);
-
+    var new_user = JSON.stringify({data: 0, name: "Guest", id: id});
+    
+    // send full user list to client first time connect
+    ws.send(JSON.stringify({data: "user-list", users: current_users}));
+    current_users.push(new_user);
+    
+    // broadcast that new user joined to everyone
     wss.broadcast(new_user);
-
+    
+    // keep a record of user id and websocket object on server
+    var user_websocket_id = {id: id, ws: ws};
+    users_websockets_and_ids.push(user_websocket_id);
+    
     ws.on('message', function(data, flags) {
         // flags.binary will be set if a binary data is received
         // flags.masked will be set if the data was masked
@@ -73,12 +81,22 @@ wss.on('connection', function(ws) {
     });
 
     ws.on('close', function() {
+        for(var j = 0; j < users_websockets_and_ids.length; j++) {
+            if(users_websockets_and_ids[j].id == id) {
+                delete users_websockets_and_ids[j].ws;
+                users_websockets_and_ids.splice(j,1);
+                current_users.splice(j,1);
+                wss.broadcast(JSON.stringify({data: "delete-user", id: id}));
+                break;
+            }
+        }
+        
         console.log('websocket connection close');
     });
 });
 
 
-Spotify.login("mot0rola", "G3tSm4rt", function (err, spotify) {
+Spotify.login("USERNAME", "PASSWORD", function (err, spotify) {
     console.log("Spotify connected");
 
     if (err) throw err;
