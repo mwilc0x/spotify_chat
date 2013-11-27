@@ -1,6 +1,5 @@
 app.service('chatService', function ($rootScope, $location) {
 
-    //var url = location.origin.replace(/^http/, 'ws');
     var url = ['ws://', $location.host(), ':', $location.port()].join('');
     console.log('Url: ', url)
     var ws = new WebSocket(url);
@@ -27,6 +26,7 @@ app.service('chatService', function ($rootScope, $location) {
                     break;
                 case 3: // user info change
                     $rootScope.$broadcast('userUpdatedInfo', server_response);
+                    break;
             }
         }
     };
