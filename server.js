@@ -29,7 +29,7 @@ var current_users = [{name: "Bot"}];
 wss.on('connection', function(ws) {
     console.log('websocket connection open');
 
-    var new_user = JSON.stringify({data: 0, name: "Guest", id: 1});
+    var new_user = JSON.stringify({data: 0, name: "Guest", id: Math.floor(Math.random()*90000) + 10000});
     current_users.push(new_user);
 
     wss.broadcast(new_user);
@@ -64,6 +64,8 @@ wss.on('connection', function(ws) {
             case 2:
                 wss.broadcast(data);
                 break;
+            case 3:
+                wss.broadcast(data);
         }
     });
 
