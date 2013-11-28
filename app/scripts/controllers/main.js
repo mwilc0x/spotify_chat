@@ -77,6 +77,7 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
         $scope.messages.push({ name: songRequest.user, text: songRequest.display });
         $log.log("audio started");
         $scope.$apply();
+        chatService.scroll();
     }
 
     function onChatMessageReceived(message) {
