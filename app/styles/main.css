@@ -105,8 +105,8 @@ ul#chat-log {
 .animate-repeat.ng-move,
 .animate-repeat.ng-enter,
 .animate-repeat.ng-leave {
-    -webkit-transition:all linear 0.5s;
-    transition:all linear 0.5s;
+    -webkit-transition:all linear 0.3s;
+    transition:all linear 0.3s;
 }
 
 .animate-repeat.ng-leave.ng-leave-active,
