@@ -1,6 +1,6 @@
 <div class="jumbotron">
     <ul id="chat-log" class="list-group">
-        <li class="list-group-item" ng-repeat="message in messages">{{message.name}} - {{message.text}}</li>
+        <li class="list-group-item animate-repeat" ng-repeat="message in messages">{{message.name}} - {{message.text}}</li>
     </ul>
     <form id="submitForm" ng-submit="submit()">
         <input chatlog x-ng-focus="chatInputFocused" ng-focus-lost="loseFocus()" type="text" id="chat-input" ng-model="text" name="text" />
@@ -9,6 +9,6 @@
 </div>
 <div class="user-list">
     <ul id="user_list" class="list-group">
-        <li class="list-group-item" ng-repeat="user in current_users.users">{{user.name}}</li>
+        <li class="list-group-item animate-repeat" ng-repeat="user in current_users.users">{{user.name}}</li>
     </ul>
 </div>
