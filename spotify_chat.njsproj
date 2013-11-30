@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{1b4e2909-8455-4a88-a496-5e9fed563373}</ProjectGuid>
     <ProjectHome />
-    <ProjectView>ShowAllFiles</ProjectView>
+    <ProjectView>ProjectFiles</ProjectView>
     <StartupFile>server.js</StartupFile>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -50,6 +50,7 @@
     <Compile Include="app\bower_components\jplayer\add-on\jquery.jplayer.inspector.js" />
     <Compile Include="app\bower_components\jplayer\jquery.jplayer\jquery.jplayer.js" />
     <Compile Include="app\bower_components\jplayer\popcorn\player\popcorn.jplayer.js" />
+    <Compile Include="app\scripts\directives\mediaPlayer.js" />
     <Compile Include="app_grunt.js" />
     <Compile Include="Gruntfile.js" />
     <Compile Include="karma-e2e.conf.js" />

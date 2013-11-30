@@ -11,8 +11,5 @@
     <ul id="user_list" class="list-group">
         <li class="list-group-item animate-repeat" ng-repeat="user in current_users.users">{{user.name}}</li>
     </ul>
-    <div class="player">
-        <h4>{{currentSong.title}}</h4>
-        <audio autoplay controls src="{{currentSong.url}}"></audio>
-    </div>
+    <media-player title="{{currentSong.title}}" src="{{currentSong.url}}" />
 </div>
