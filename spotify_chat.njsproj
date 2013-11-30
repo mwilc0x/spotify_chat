@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1b4e2909-8455-4a88-a496-5e9fed563373}</ProjectGuid>
+    <ProjectHome />
+    <ProjectView>ShowAllFiles</ProjectView>
+    <StartupFile>server.js</StartupFile>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <ItemGroup>
+    <Content Include="app\bower_components\jplayer\.bower.json" />
+    <Content Include="app\bower_components\jplayer\.jamignore" />
+    <Content Include="app\bower_components\jplayer\actionscript\happyworm\jPlayer\ConnectManager.as" />
+    <Content Include="app\bower_components\jplayer\actionscript\happyworm\jPlayer\JplayerEvent.as" />
+    <Content Include="app\bower_components\jplayer\actionscript\happyworm\jPlayer\JplayerMp3.as" />
+    <Content Include="app\bower_components\jplayer\actionscript\happyworm\jPlayer\JplayerMp4.as" />
+    <Content Include="app\bower_components\jplayer\actionscript\happyworm\jPlayer\JplayerRtmp.as" />
+    <Content Include="app\bower_components\jplayer\actionscript\happyworm\jPlayer\JplayerStatus.as" />
+    <Content Include="app\bower_components\jplayer\actionscript\happyworm\jPlayer\TraceOut.as" />
+    <Content Include="app\bower_components\jplayer\actionscript\Jplayer.as" />
+    <Content Include="app\bower_components\jplayer\actionscript\Jplayer.fla" />
+    <Content Include="app\bower_components\jplayer\bower.json" />
+    <Content Include="app\bower_components\jplayer\jplayer.jquery.json" />
+    <Content Include="app\bower_components\jplayer\jquery.jplayer\Jplayer.swf" />
+    <Content Include="app\bower_components\jplayer\MIT-LICENSE.txt" />
+    <Content Include="app\bower_components\jplayer\package.json" />
+    <Content Include="app\bower_components\jplayer\README.md" />
+    <Content Include="app\bower_components\jplayer\skin\blue.monday\jplayer.blue.monday.css" />
+    <Content Include="app\bower_components\jplayer\skin\blue.monday\jplayer.blue.monday.jpg" />
+    <Content Include="app\bower_components\jplayer\skin\blue.monday\jplayer.blue.monday.seeking.gif" />
+    <Content Include="app\bower_components\jplayer\skin\blue.monday\jplayer.blue.monday.video.play.png" />
+    <Content Include="app\bower_components\jplayer\skin\blue.monday\skin.handlebars" />
+    <Content Include="app\bower_components\jplayer\skin\pink.flag\jplayer.pink.flag.css" />
+    <Content Include="app\bower_components\jplayer\skin\pink.flag\jplayer.pink.flag.jpg" />
+    <Content Include="app\bower_components\jplayer\skin\pink.flag\jplayer.pink.flag.seeking.gif" />
+    <Content Include="app\bower_components\jplayer\skin\pink.flag\jplayer.pink.flag.video.play.png" />
+    <Content Include="bower.json" />
+    <Content Include="package.json" />
+    <Content Include="README.md" />
+    <Compile Include="app.js" />
+    <Compile Include="app\bower_components\jplayer\add-on\jplayer.playlist.js" />
+    <Compile Include="app\bower_components\jplayer\add-on\jquery.jplayer.inspector.js" />
+    <Compile Include="app\bower_components\jplayer\jquery.jplayer\jquery.jplayer.js" />
+    <Compile Include="app\bower_components\jplayer\popcorn\player\popcorn.jplayer.js" />
+    <Compile Include="app_grunt.js" />
+    <Compile Include="Gruntfile.js" />
+    <Compile Include="karma-e2e.conf.js" />
+    <Compile Include="karma.conf.js" />
+    <Compile Include="server.js" />
+    <Content Include=".git\ms-persist.xml" />
+    <Content Include="app\robots.txt" />
+    <Content Include="app\404.html" />
+    <Content Include="app\index.html" />
+    <Content Include="app\favicon.ico" />
+    <Compile Include="routes\index.js" />
+    <Content Include="test\runner.html" />
+    <Compile Include="app\scripts\app.js" />
+    <Compile Include="app\scripts\bootstrap.js" />
+    <Compile Include="app\scripts\ui-bootstrap-tpls-0.6.0.js" />
+    <Content Include="app\styles\main.css" />
+    <Content Include="app\views\main.html" />
+    <Content Include="app\views\register.html" />
+    <Content Include="app\bower_components\angular\.bower.json" />
+    <Content Include="app\bower_components\angular\bower.json" />
+    <Compile Include="app\bower_components\angular\angular.js" />
+    <Compile Include="app\bower_components\angular\angular.min.js" />
+    <Content Include="app\bower_components\angular-bootstrap\.bower.json" />
+    <Content Include="app\bower_components\angular-bootstrap\bower.json" />
+    <Compile Include="app\bower_components\angular-bootstrap\ui-bootstrap-tpls.js" />
+    <Compile Include="app\bower_components\angular-bootstrap\ui-bootstrap-tpls.min.js" />
+    <Compile Include="app\bower_components\angular-bootstrap\ui-bootstrap.js" />
+    <Compile Include="app\bower_components\angular-bootstrap\ui-bootstrap.min.js" />
+    <Content Include="app\bower_components\angular-cookies\.bower.json" />
+    <Content Include="app\bower_components\angular-cookies\bower.json" />
+    <Content Include="app\bower_components\angular-cookies\README.md" />
+    <Compile Include="app\bower_components\angular-cookies\angular-cookies.js" />
+    <Compile Include="app\bower_components\angular-cookies\angular-cookies.min.js" />
+    <Content Include="app\bower_components\angular-mocks\.bower.json" />
+    <Content Include="app\bower_components\angular-mocks\bower.json" />
+    <Content Include="app\bower_components\angular-mocks\README.md" />
+    <Compile Include="app\bower_components\angular-mocks\angular-mocks.js" />
+    <Content Include="app\bower_components\angular-resource\.bower.json" />
+    <Content Include="app\bower_components\angular-resource\bower.json" />
+    <Content Include="app\bower_components\angular-resource\README.md" />
+    <Compile Include="app\bower_components\angular-resource\angular-resource.js" />
+    <Compile Include="app\bower_components\angular-resource\angular-resource.min.js" />
+    <Content Include="app\bower_components\angular-sanitize\.bower.json" />
+    <Content Include="app\bower_components\angular-sanitize\bower.json" />
+    <Content Include="app\bower_components\angular-sanitize\README.md" />
+    <Compile Include="app\bower_components\angular-sanitize\angular-sanitize.js" />
+    <Compile Include="app\bower_components\angular-sanitize\angular-sanitize.min.js" />
+    <Content Include="app\bower_components\angular-scenario\.bower.json" />
+    <Content Include="app\bower_components\angular-scenario\bower.json" />
+    <Content Include="app\bower_components\angular-scenario\README.md" />
+    <Compile Include="app\bower_components\angular-scenario\angular-scenario.js" />
+    <Compile Include="app\bower_components\angular-scenario\jstd-scenario-adapter-config.js" />
+    <Compile Include="app\bower_components\angular-scenario\jstd-scenario-adapter.js" />
+    <Content Include="app\bower_components\es5-shim\.bower.json" />
+    <Content Include="app\bower_components\es5-shim\package.json" />
+    <Content Include="app\bower_components\es5-shim\CONTRIBUTORS.md" />
+    <Content Include="app\bower_components\es5-shim\README.md" />
+    <Compile Include="app\bower_components\es5-shim\es5-sham.js" />
+    <Compile Include="app\bower_components\es5-shim\es5-sham.min.js" />
+    <Compile Include="app\bower_components\es5-shim\es5-shim.js" />
+    <Compile Include="app\bower_components\es5-shim\es5-shim.min.js" />
+    <Content Include="app\bower_components\jquery\.bower.json" />
+    <Content Include="app\bower_components\jquery\bower.json" />
+    <Content Include="app\bower_components\jquery\component.json" />
+    <Content Include="app\bower_components\jquery\composer.json" />
+    <Content Include="app\bower_components\jquery\package.json" />
+    <Content Include="app\bower_components\jquery\README.md" />
+    <Compile Include="app\bower_components\jquery\jquery-migrate.js" />
+    <Compile Include="app\bower_components\jquery\jquery-migrate.min.js" />
+    <Compile Include="app\bower_components\jquery\jquery.js" />
+    <Compile Include="app\bower_components\jquery\jquery.min.js" />
+    <Content Include="app\bower_components\json3\.bower.json" />
+    <Content Include="app\bower_components\json3\bower.json" />
+    <Content Include="app\bower_components\json3\README.md" />
+    <Content Include="app\bower_components\es5-shim\tests\index.min.html" />
+    <Content Include="app\bower_components\es5-shim\tests\index.html" />
+    <Compile Include="app\bower_components\es5-shim\tests\helpers\h-kill.js" />
+    <Compile Include="app\bower_components\es5-shim\tests\helpers\h-matchers.js" />
+    <Compile Include="app\bower_components\es5-shim\tests\helpers\h.js" />
+    <Content Include="app\bower_components\es5-shim\tests\lib\jasmine.css" />
+    <Content Include="app\bower_components\es5-shim\tests\lib\jasmine_favicon.png" />
+    <Compile Include="app\bower_components\es5-shim\tests\lib\jasmine-html.js" />
+    <Compile Include="app\bower_components\es5-shim\tests\lib\jasmine.js" />
+    <Compile Include="app\bower_components\es5-shim\tests\lib\json2.js" />
+    <Compile Include="app\bower_components\es5-shim\tests\spec\s-array.js" />
+    <Compile Include="app\bower_components\es5-shim\tests\spec\s-date.js" />
+    <Compile Include="app\bower_components\es5-shim\tests\spec\s-function.js" />
+    <Compile Include="app\bower_components\es5-shim\tests\spec\s-number.js" />
+    <Compile Include="app\bower_components\es5-shim\tests\spec\s-object.js" />
+    <Compile Include="app\bower_components\es5-shim\tests\spec\s-string.js" />
+    <Compile Include="app\bower_components\json3\lib\json3.js" />
+    <Compile Include="app\bower_components\json3\lib\json3.min.js" />
+    <Compile Include="app\scripts\controllers\main.js" />
+    <Compile Include="app\scripts\controllers\modal.js" />
+    <Compile Include="app\scripts\directives\autoFocus.js" />
+    <Compile Include="app\scripts\directives\chatlog.js" />
+    <Compile Include="app\scripts\services\audio.js" />
+    <Compile Include="app\scripts\services\chatService.js" />
+    <Compile Include="app\scripts\services\messageType.js" />
+    <Compile Include="config\environments\development.js" />
+    <Compile Include="config\environments\index.js" />
+    <Compile Include="config\environments\production.js" />
+    <Compile Include="test\spec\controllers\main.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include=".git" />
+    <Folder Include="app" />
+    <Folder Include="app\bower_components\" />
+    <Folder Include="app\bower_components\angular" />
+    <Folder Include="app\bower_components\angular-bootstrap" />
+    <Folder Include="app\bower_components\angular-cookies" />
+    <Folder Include="app\bower_components\angular-mocks" />
+    <Folder Include="app\bower_components\angular-resource" />
+    <Folder Include="app\bower_components\angular-sanitize" />
+    <Folder Include="app\bower_components\angular-scenario" />
+    <Folder Include="app\bower_components\es5-shim" />
+    <Folder Include="app\bower_components\es5-shim\tests" />
+    <Folder Include="app\bower_components\es5-shim\tests\helpers" />
+    <Folder Include="app\bower_components\es5-shim\tests\lib" />
+    <Folder Include="app\bower_components\es5-shim\tests\spec" />
+    <Folder Include="app\bower_components\jplayer\" />
+    <Folder Include="app\bower_components\jplayer\actionscript\" />
+    <Folder Include="app\bower_components\jplayer\actionscript\happyworm\" />
+    <Folder Include="app\bower_components\jplayer\actionscript\happyworm\jPlayer\" />
+    <Folder Include="app\bower_components\jplayer\add-on\" />
+    <Folder Include="app\bower_components\jplayer\jquery.jplayer\" />
+    <Folder Include="app\bower_components\jplayer\popcorn\" />
+    <Folder Include="app\bower_components\jplayer\popcorn\player\" />
+    <Folder Include="app\bower_components\jplayer\skin\" />
+    <Folder Include="app\bower_components\jplayer\skin\blue.monday\" />
+    <Folder Include="app\bower_components\jplayer\skin\pink.flag\" />
+    <Folder Include="app\bower_components\jquery" />
+    <Folder Include="app\bower_components\json3" />
+    <Folder Include="app\bower_components\json3\lib" />
+    <Folder Include="app\scripts" />
+    <Folder Include="app\scripts\controllers" />
+    <Folder Include="app\scripts\directives" />
+    <Folder Include="app\scripts\services" />
+    <Folder Include="app\styles" />
+    <Folder Include="app\views" />
+    <Folder Include="config\" />
+    <Folder Include="config\environments" />
+    <Folder Include="routes" />
+    <Folder Include="test" />
+    <Folder Include="test\spec\" />
+    <Folder Include="test\spec\controllers" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
