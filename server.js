@@ -1,6 +1,6 @@
 var express = require("express"),
-    Spotify = require("spotify-web"),
-    spotifysearch = require('spotify');
+    youtube = require('youtube-feeds'),
+    spotifyPlugin = require('./plugins/spotify.js');
 
 var WebSocketServer = require('ws').Server
     , http = require('http')
@@ -24,15 +24,18 @@ wss.broadcast = function(new_user) {
     }
 };
 
-var current_users = {data: 0, users: [{ data: 0, name: "Bot", id: 0 }]};
-var users_websockets_and_ids = [{id: 0, ws: ""}];
+// init plugins
+spotifyPlugin.launch(app);
+
+var current_users = {data: "user-info", users: [{ data: "user-info", name: "Bot", id: 0 }]};
+var users_websockets_and_ids = [{id: "user-info", ws: ""}];
 
 wss.on('connection', function(ws) {
     console.log('websocket connection open');
 
     var id = Math.floor(Math.random()*90000) + 10000;
 
-    var new_user = {data: 0, name: "Guest", id: id};
+    var new_user = {data: "user-info", name: "Guest", id: id};
     
     // send full user list to client first time connect
     ws.send(JSON.stringify({data: "user-list", users: current_users}));
@@ -51,36 +54,17 @@ wss.on('connection', function(ws) {
         // flags.masked will be set if the data was masked
         var message = JSON.parse(data);
 
-        function getSpotifyURI(search) {
-            spotifysearch.search({ type: 'track', query: search }, function(err, data) {
-                if ( err ) {
-                    console.log('Error occurred: ' + err);
-                    return;
-                }
-
-                if(data != null && data.tracks != null && data.tracks[0] != null
-                    && data.tracks[0].href != null) {
-
-                    var logout = JSON.stringify(data.tracks[0]);
-                    console.log("results: " + logout);
-
-                    var displayStr = "Now playing " + data.tracks[0].artists[0].name + " - " + data.tracks[0].name + " (" + data.tracks[0].album.released + ")";
-
-                    console.log(search + " coming right up!")
-                    var track = JSON.stringify({data: 1, song: data.tracks[0].href, user: message.user, display: displayStr});
-                    wss.broadcast(track);
-                }
-            });
-        }
-
         switch(message.data) {
-            case 1:
-                getSpotifyURI(message.text);
+            case "song-info":
+                spotifyPlugin.getURI(message.text, message, function(track) {
+                    wss.broadcast(track);
+                });
+
                 break;
-            case 2:
+            case "chat-message":
                 wss.broadcast(data);
                 break;
-            case 3:
+            case "user-info-change":
                 for(var i = 0; i < current_users.users.length; i++) {
                     if(current_users.users[i].id == message.id) {
                         current_users.users[i].name = message.name;
@@ -88,6 +72,8 @@ wss.on('connection', function(ws) {
                     }
                 }
                 wss.broadcast(data);
+                break;
+            case "youtube":
                 break;
         }
     });
@@ -104,18 +90,5 @@ wss.on('connection', function(ws) {
         }
         
         console.log('websocket connection close');
-    });
-});
-
-
-Spotify.login("USERNAME","PASSWORD", function (err, spotify) {
-    console.log("Spotify connected");
-
-    if (err) throw err;
-
-    app.get("/audio/:uri", function (req, res) {
-        spotify.get(req.params.uri, function (err, track) {
-            track.play().pipe(res);
-        });
     });
 });
