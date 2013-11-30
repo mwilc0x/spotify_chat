@@ -11,7 +11,7 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
     $scope.chat_history = [{ text: "" }];
     $scope.chat_history_index = -1;
     $scope.loggedIn = false;
-
+    $scope.url = null;
     $scope.chatInputFocused = false;
 
     $scope.loseFocus = function () {
@@ -73,8 +73,9 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
 
     function onSongRequested(songRequest) {
         $log.log("in audio case song: " + songRequest.song + " user: " + songRequest.user);
-        audio.play("/audio/" + songRequest.song);
-        $scope.messages.push({ name: songRequest.user, text: songRequest.display });
+        $log.log(songRequest);
+        $scope.currentSong = { url: "/audio/" + songRequest.song , title: songRequest.title };
+        $scope.messages.push({ name: songRequest.user, text: "Now playing " + songRequest.title });
         $log.log("audio started");
         $scope.$apply();
         chatService.scroll();
