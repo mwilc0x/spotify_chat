@@ -1,6 +1,6 @@
 var express = require("express"),
-    youtube = require('youtube-feeds'),
-    spotifyPlugin = require('./plugins/spotify.js');
+    youtube = require('./plugins/youtube.js'),
+    spotify = require('./plugins/spotify.js');
 
 var WebSocketServer = require('ws').Server
     , http = require('http')
@@ -25,7 +25,7 @@ wss.broadcast = function(new_user) {
 };
 
 // init plugins
-spotifyPlugin.launch(app);
+spotify.launch(app);
 
 var current_users = {data: "user-info", users: [{ data: "user-info", name: "Bot", id: 0 }]};
 var users_websockets_and_ids = [{id: "user-info", ws: ""}];
@@ -56,7 +56,7 @@ wss.on('connection', function(ws) {
 
         switch(message.data) {
             case "song-info":
-                spotifyPlugin.getURI(message.text, message, function(track) {
+                spotify.getURI(message.text, message, function(track) {
                     wss.broadcast(track);
                 });
 
