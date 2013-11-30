@@ -15,18 +15,19 @@ app.service('chatService', function ($rootScope, $location) {
                 case "delete-user": // user left chat room
                     $rootScope.$broadcast('userLeft', server_response);
                     break;
-                case 0: // user information
+                case "user-info": // user information
                     $rootScope.$broadcast('userJoined', server_response);
                     break;
-                case 1: // song information
+                case "song-info": // song information
                     $rootScope.$broadcast('songRequested', server_response);
                     break;
-                case 2: // chat message
+                case "chat-message": // chat message
                     $rootScope.$broadcast('chatMessageReceived', server_response);
                     break;
-                case 3: // user info change
+                case "user-info-change": // user info change
                     $rootScope.$broadcast('userUpdatedInfo', server_response);
                     break;
+
             }
         }
     };

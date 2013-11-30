@@ -2,12 +2,16 @@ app.factory('messageType', function() {
     return {
         decipher: function(message) {
             var data;
-            if(message.search('bot play ') != -1) {
-                data = 1;
+            if(message.search('!spotify ') != -1) {
+                data = "song-info";
+                message = message.substring(9, message.length);
+            }
+            else if(message.search('!youtube ') != -1) {
+                data = "youtube";
                 message = message.substring(9, message.length);
             }
             else {
-                data = 2;
+                data = "chat-message";
             }
 
             return {data: data, text: message};

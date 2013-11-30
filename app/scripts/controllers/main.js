@@ -2,7 +2,7 @@
 
 app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, chatService, audio) {
     $scope.user = {};
-    $scope.current_users = { data: 0, users: []};
+    $scope.current_users = { data: "user-info", users: []};
     $scope.text = "";
     $scope.messages = [{
         name: "Bot",
@@ -17,6 +17,8 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
     $scope.loseFocus = function () {
         $scope.chatInputFocused = false;
     };
+
+    $scope.youtube = false;
 
     // opening || closing of modal window
     $scope.open = function () {
@@ -34,7 +36,7 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
             }
 
             // broadcast nick change to server and everyone in chat room
-            var message = JSON.stringify({ data: 3, name: nickname, id: $scope.user.id });
+            var message = JSON.stringify({ data: "user-info-change", name: nickname, id: $scope.user.id });
             chatService.send(message);
 
             $scope.chatInputFocused = true;
@@ -74,6 +76,7 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
     function onSongRequested(songRequest) {
         $log.log("in audio case song: " + songRequest.song + " user: " + songRequest.user);
         audio.play("/audio/" + songRequest.song);
+        $scope.youtube = true;
         $scope.messages.push({ name: songRequest.user, text: songRequest.display });
         $log.log("audio started");
         $scope.$apply();
