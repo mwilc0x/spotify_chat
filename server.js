@@ -1,6 +1,7 @@
 var express = require("express"),
     Spotify = require("spotify-web"),
-    spotifysearch = require('spotify');
+    spotifysearch = require('spotify'),
+    spotifyCredentials = require('./spotifyCredentials');
 
 var WebSocketServer = require('ws').Server
     , http = require('http')
@@ -108,7 +109,13 @@ wss.on('connection', function(ws) {
 });
 
 
-Spotify.login("USERNAME","PASSWORD", function (err, spotify) {
+if (spotifyCredentials.username === "USERNAME") {
+    throw "Invalid Spotify credentials -- please update ./spotifyCredentials.js";
+}
+
+console.log('Connecting to Spotify as %s...', spotifyCredentials.username);
+
+Spotify.login(spotifyCredentials.username, spotifyCredentials.password, function (err, spotify) {
     console.log("Spotify connected");
 
     if (err) throw err;
