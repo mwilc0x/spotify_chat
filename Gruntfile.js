@@ -56,19 +56,19 @@ module.exports = function (grunt) {
       livereload: {
         options: {
           livereload: true,
-          server: path.resolve('app.js'),
+          server: path.resolve('server.js'),
           bases: [path.resolve('./.tmp'), path.resolve(__dirname, yeomanConfig.app)]
         }
       },
       test: {
         options: {
-          server: path.resolve('app.js'),
+          server: path.resolve('server.js'),
           bases: [path.resolve('./.tmp'), path.resolve(__dirname, 'test')]
         }
       },
       dist: {
         options: {
-          server: path.resolve('app.js'),
+          server: path.resolve('server.js'),
           bases: path.resolve(__dirname, yeomanConfig.dist)
         }
       }
