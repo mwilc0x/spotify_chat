@@ -101,3 +101,11 @@ body {
 .animate-repeat .ng-enter.ng-enter-active {
   opacity: 1;
 }
+
+a.change-username {
+    font-size: 12px;
+}
+
+a.change-username:hover {
+    cursor: pointer;
+}
