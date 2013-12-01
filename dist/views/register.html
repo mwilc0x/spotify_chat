@@ -1,0 +1,19 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="cancel()">&times;</button>
+            <h4 class="modal-title">Welcome to Spotify chat! Chat with friends and listen to your favorite music!</h4>
+        </div>
+        <div class="modal-body">
+            <form id="submitForm" ng-submit="ok(nick)" class="form-inline" role="form">
+                <div class="input-group">
+                    <label class="sr-only">Nickname:</label>
+                    <input class="form-control input-lg" x-ng-focus="usernameInputFocused" ng-focus-lost="loseFocus()" type="text" id="nick-register" ng-model="nick" name="text" placeholder="Enter Nickname">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary input-lg" type="submit">Register</button>
+                </span>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
