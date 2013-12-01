@@ -1,15 +1,32 @@
-<div class="jumbotron">
-    <ul id="chat-log" class="list-group">
-        <li class="list-group-item animate-repeat" ng-repeat="message in messages">{{message.name}} - {{message.text}}</li>
-    </ul>
-    <form id="submitForm" ng-submit="submit()">
-        <input chatlog x-ng-focus="chatInputFocused" ng-focus-lost="loseFocus()" type="text" id="chat-input" ng-model="text" name="text" />
-        <input type="submit" id="chat-submit" value="Submit" />
-    </form>
+<div class="full-screen container">
+    <div id="chat" class="full-screen col-lg-10">
+        <h4>Chat History</h4>
+        <ul class="messages list-group">
+            <li class="message clearfix list-group-item animate-repeat" ng-repeat="message in messages">
+                <span class="user col-lg-1">{{message.name}}</span>
+                <span class="message-text col-lg-11">{{message.text}}</span>
+            </li>
+        </ul>
+        <div class="chat-input">
+            <form ng-submit="submit()" class="form-inline" role="form">
+                <div class="input-group">
+                    <input class="form-control" chatlog x-ng-focus="chatInputFocused" ng-focus-lost="loseFocus()"
+                           type="text" ng-model="text" name="text"/>
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </span>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="full-screen col-lg-2">
+        <div id="user-list">
+            <h4>Users Online</h4>
+            <ul id="user_list" class="list-group nav nav-pills nav-stacked">
+                <li class="list-group-item" ng-repeat="user in current_users.users">{{user.name}}</li>
+            </ul>
+        </div>
+        <media-player title="{{currentSong.title}}" src="{{currentSong.url}}"/>
+    </div>
 </div>
-<div class="user-list">
-    <ul id="user_list" class="list-group">
-        <li class="list-group-item animate-repeat" ng-repeat="user in current_users.users">{{user.name}}</li>
-    </ul>
-    <media-player title="{{currentSong.title}}" src="{{currentSong.url}}" />
-</div>
+
