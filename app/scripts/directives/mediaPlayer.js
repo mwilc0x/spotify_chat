@@ -3,8 +3,8 @@ app.directive('mediaPlayer', function($log) {
         restrict: 'E',
         replace: true,
         scope: {
-            title: '@',
-            src: '@'
+          title: '@',
+          src: '@'
         },
         template: '<div class="player" ng-hide="!src"><h5>{{title}}</h5><audio autoplay controls src="{{src}}"></audio></div>'
     };
