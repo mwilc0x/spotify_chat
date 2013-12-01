@@ -11,7 +11,7 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
     $scope.chat_history = [{ text: "" }];
     $scope.chat_history_index = -1;
     $scope.loggedIn = false;
-
+    $scope.url = null;
     $scope.chatInputFocused = false;
 
     $scope.loseFocus = function () {
@@ -75,10 +75,17 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
 
     function onSongRequested(songRequest) {
         $log.log("in audio case song: " + songRequest.song + " user: " + songRequest.user);
-        audio.play("/audio/" + songRequest.song);
-        $scope.youtube = true;
-        $scope.messages.push({ name: songRequest.user, text: songRequest.display });
+        $log.log(songRequest);
+        $scope.currentSong = { url: "/audio/" + songRequest.song , title: songRequest.title };
+        $scope.messages.push({ name: songRequest.user, text: "Now playing " + songRequest.title });
         $log.log("audio started");
+        $scope.$apply();
+        chatService.scroll();
+    }
+
+    function onYoutubeRequested(youtubeRequest) {
+        $scope.youtube = true;
+        $scope.messages.push({ name: "YoutubeTest", text: "Testing" });
         $scope.$apply();
         chatService.scroll();
     }
@@ -104,7 +111,8 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
     $scope.$on('userLeft', function (evt, user) { onUserLeft(user); });
     $scope.$on('songRequested', function (evt, songRequest) { onSongRequested(songRequest); });
     $scope.$on('chatMessageReceived', function (evt, message) { onChatMessageReceived(message); });
-    $scope.$on('userUpdatedInfo', function (evt, user) { onUserUpdatedInfo(user); })
+    $scope.$on('userUpdatedInfo', function (evt, user) { onUserUpdatedInfo(user); });
+    $scope.$on('youtubeRequested', function (evt, youtubeRequest) { onYoutubeRequested(youtubeRequest); });
 
     $scope.submit = function () {
         if (this.text) {

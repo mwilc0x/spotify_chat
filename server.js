@@ -73,7 +73,8 @@ wss.on('connection', function(ws) {
                 }
                 wss.broadcast(data);
                 break;
-            case "youtube":
+            case "youtube-info":
+                wss.broadcast(data);
                 break;
         }
     });
@@ -92,3 +93,5 @@ wss.on('connection', function(ws) {
         console.log('websocket connection close');
     });
 });
+
+module.exports = app;
