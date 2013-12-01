@@ -3,6 +3,11 @@ spotify_chat
 
 real time chat and spotify streaming using node, websockets, angularjs and html5 audio
 
+# Demo
+
+Updated working demo at http://spotify-chat.herokuapp.com/ ... check it
+out!
+
 # Running Locally
 
 Right now I have it setup so that you need a spotify premium account to run. If you do you'll have to
