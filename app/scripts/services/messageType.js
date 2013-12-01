@@ -7,7 +7,7 @@ app.factory('messageType', function() {
                 message = message.substring(9, message.length);
             }
             else if(message.search('!youtube ') != -1) {
-                data = "youtube";
+                data = "youtube-info";
                 message = message.substring(9, message.length);
             }
             else {

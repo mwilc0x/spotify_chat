@@ -1,6 +1,6 @@
 <div class="jumbotron">
     <ul id="chat-log" class="list-group">
-        <li class="list-group-item animate-repeat" ng-repeat="message in messages">{{message.name}} - {{message.text}}</li>
+        <li embed-video class="list-group-item animate-repeat" ng-repeat="message in messages">{{message.name}} - {{message.text}}</li>
     </ul>
     <form id="submitForm" ng-submit="submit()">
         <input chatlog x-ng-focus="chatInputFocused" ng-focus-lost="loseFocus()" type="text" id="chat-input" ng-model="text" name="text" />

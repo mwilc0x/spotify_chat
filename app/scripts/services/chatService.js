@@ -27,6 +27,9 @@ app.service('chatService', function ($rootScope, $location) {
                 case "user-info-change": // user info change
                     $rootScope.$broadcast('userUpdatedInfo', server_response);
                     break;
+                case "youtube-info": // youtube information
+                    $rootScope.$broadcast('youtubeRequested', server_response);
+                    break;
 
             }
         }
