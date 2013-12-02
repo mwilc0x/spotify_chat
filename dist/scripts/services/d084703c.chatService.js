@@ -41,7 +41,7 @@ app.service('chatService', function ($rootScope, $location) {
     }
 
     function scrollDown() {
-        var objDiv = document.getElementById("chat");
+        var objDiv = document.getElementById("scroll");
         objDiv.scrollTop = objDiv.scrollHeight;
     }
 
