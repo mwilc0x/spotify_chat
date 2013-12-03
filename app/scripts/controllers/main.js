@@ -85,7 +85,8 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
 
     function onYoutubeRequested(youtubeRequest) {
         $scope.youtube = true;
-        $scope.messages.push({ name: "YoutubeTest", text: "Testing" });
+        $scope.src = "//www.youtube.com/embed/"+youtubeRequest.videoID+"?autoplay=1";
+        $scope.messages.push({ name: youtubeRequest.user, text: youtubeRequest.title });
         $scope.$apply();
         chatService.scroll();
     }
