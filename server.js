@@ -74,7 +74,11 @@ wss.on('connection', function(ws) {
                 wss.broadcast(data);
                 break;
             case "youtube-info":
-                wss.broadcast(data);
+
+                youtube.search(message.text, message, function(video) {
+                    wss.broadcast(video);
+                });
+
                 break;
         }
     });
