@@ -89,6 +89,7 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
         $scope.messages.push({ name: youtubeRequest.user, text: youtubeRequest.title });
         $scope.$apply();
         chatService.scroll();
+        $scope.youtube = false;
     }
 
     function onChatMessageReceived(message) {
