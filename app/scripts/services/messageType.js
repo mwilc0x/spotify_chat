@@ -10,6 +10,10 @@ app.factory('messageType', function() {
                 data = "youtube-info";
                 message = message.substring(9, message.length);
             }
+            else if(message.search('!maps ') != -1) {
+                data = "maps-info";
+                message = message.substring(6, message.length);
+            }
             else {
                 data = "chat-message";
             }
