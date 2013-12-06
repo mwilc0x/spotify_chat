@@ -30,7 +30,9 @@ app.service('chatService', function ($rootScope, $location) {
                 case "youtube-info": // youtube information
                     $rootScope.$broadcast('youtubeRequested', server_response);
                     break;
-
+                case "maps-info": // youtube information
+                    $rootScope.$broadcast('mapsRequested', server_response);
+                    break;
             }
         }
     };
@@ -41,7 +43,7 @@ app.service('chatService', function ($rootScope, $location) {
     }
 
     function scrollDown() {
-        var objDiv = document.getElementById("chat");
+        var objDiv = document.getElementById("scroll");
         objDiv.scrollTop = objDiv.scrollHeight;
     }
 
