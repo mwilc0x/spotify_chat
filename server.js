@@ -1,6 +1,7 @@
 var express = require("express"),
     youtube = require('./plugins/youtube.js'),
-    spotify = require('./plugins/spotify.js');
+    spotify = require('./plugins/spotify.js'),
+    maps = require('./plugins/maps.js');
 
 var WebSocketServer = require('ws').Server
     , http = require('http')
@@ -80,6 +81,10 @@ wss.on('connection', function(ws) {
                 });
 
                 break;
+            case "maps-info":
+                maps.getCoordinates(message.text, message, function(coords) {
+                    wss.broadcast(coords);
+                });
         }
     });
 
