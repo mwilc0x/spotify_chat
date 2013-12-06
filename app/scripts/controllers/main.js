@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, chatService, audio) {
+app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, $compile, messageType, chatService, audio) {
     $scope.user = {};
     $scope.current_users = { data: "user-info", users: []};
     $scope.text = "";
@@ -19,6 +19,7 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
     };
 
     $scope.youtube = false;
+    $scope.maps = false;
 
     // opening || closing of modal window
     $scope.open = function () {
@@ -108,6 +109,14 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
         $scope.$apply();
     }
 
+    function onMapsRequested(mapsRequest) {
+        $scope.maps = true;
+        $scope.messages.push({ name: mapsRequest.user, text: mapsRequest.addr });
+        $scope.$digest();
+        chatService.scroll();
+        $scope.maps = false;
+    }
+
     $scope.$on('userList', function (evt, users) { onUserList(users); });
     $scope.$on('userJoined', function (evt, user) { onUserJoined(user); });
     $scope.$on('userLeft', function (evt, user) { onUserLeft(user); });
@@ -115,6 +124,7 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, messageType, 
     $scope.$on('chatMessageReceived', function (evt, message) { onChatMessageReceived(message); });
     $scope.$on('userUpdatedInfo', function (evt, user) { onUserUpdatedInfo(user); });
     $scope.$on('youtubeRequested', function (evt, youtubeRequest) { onYoutubeRequested(youtubeRequest); });
+    $scope.$on('mapsRequested', function (evt, mapsRequest) { onMapsRequested(mapsRequest); });
 
     $scope.submit = function () {
         if (this.text) {
