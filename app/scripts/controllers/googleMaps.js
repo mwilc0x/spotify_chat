@@ -1,11 +1,7 @@
-app.controller('MapCtrl', ['$scope', '$rootScope', function ($scope, $rootScope) {
-    $scope.lat = 40.722283;
-    $scope.lng = -74.005623;
+app.controller('MapCtrl', ['$scope', '$rootScope', 'maps', function ($scope, $rootScope, maps) {
+    $scope.lat = maps.model.lat;
+    $scope.lng = maps.model.lng;
 
-    $rootScope.$on('mapsRequested', function (evt, mapsRequest) {
-        $scope.lat = mapsRequest.lat;
-        $scope.lng = mapsRequest.lng;
-    });
 
     $scope.mapOptions = {
         center: new google.maps.LatLng($scope.lat, $scope.lng),
