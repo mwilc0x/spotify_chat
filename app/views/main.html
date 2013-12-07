@@ -1,5 +1,5 @@
 <div class="full-screen container">
-    <div id="chat" class="full-screen col-lg-10">
+    <div id="chat" class="col-lg-10">
         <h4>Chat History</h4>
         <ul id="scroll" class="messages list-group">
             <li class="message clearfix list-group-item animate-repeat" ng-repeat="message in messages">
@@ -20,6 +20,23 @@
                 </div>
             </form>
         </div>
+        <!--<div id="connectControls">
+            <button id="connectButton" onclick="connect()">Connect</button>
+            <button id="hangupButton" disabled="disabled" onclick="hangup()">Hangup</button>
+            <div id="iam">Not yet connected...</div>
+            <br />
+            <strong>Connected users:</strong>
+            <div id="otherClients"></div>
+        </div> -->
+
+        <div id="videos">
+            <video autoplay="autoplay" id="selfVideo" class="easyrtcMirror"></video>
+            <video autoplay="autoplay" id="callerVideo"></video>
+            <!--<div id="acceptCallBox">
+                <div id="acceptCallLabel"></div>
+                <button id="callAcceptButton" >Accept</button> <button id="callRejectButton">Reject</button>
+            </div> -->
+        </div>
     </div>
     <div class="full-screen col-lg-2">
         <div id="user-list">
@@ -29,6 +46,7 @@
             </ul>
         </div>
         <a class="change-username" ng-click="open()">Change Username</a>
+        <a class="video-chat" ng-controller="videoChat" ng-show="!video" ng-click="connect()">Enable Video Chat</a>
         <media-player title="{{currentSong.title}}" src="{{currentSong.url}}"/>
     </div>
 </div>
