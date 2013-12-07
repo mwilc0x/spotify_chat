@@ -1,11 +1,6 @@
-/**
- * Created by mikewilcox on 06/12/2013.
- */
-
 app.service('maps', function($rootScope) {
 
     var service = {
-
         model: {
             lat: '',
             lng: ''
