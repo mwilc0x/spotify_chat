@@ -1,4 +1,4 @@
-app.directive('embedVideo', function ($compile, $rootScope) {
+app.directive('embedVideo', function ($compile, $timeout) {
     return {
         restrict: 'E',
         scope:{},
@@ -10,7 +10,6 @@ app.directive('embedVideo', function ($compile, $rootScope) {
                         '<iframe width="560" height="315" src="{{url}}" frameborder="0" allowfullscreen></iframe>'
                     )(scope)
                 );
-                scope.$parent.youtube = false;
             }
         }
     };
