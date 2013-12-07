@@ -6,7 +6,7 @@ app.controller('MainCtrl', function MainCtrl($log, $scope, $modal, $compile, mes
     $scope.text = "";
     $scope.messages = [{
         name: "Bot",
-        text: 'Welcome! To play a song, type "bot play song or artist"'
+        text: 'Welcome! Available commands: !spotify "song", !youtube "video", !maps "location"'
     }];
     $scope.chat_history = [{ text: "" }];
     $scope.chat_history_index = -1;
