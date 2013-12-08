@@ -4,9 +4,15 @@ app.controller('videoChat', function videoChat($scope, videoChatService) {
     $scope.video = false;
 
     $scope.connect = function() {
-        $scope.video = true;
-        $scope.$apply();
+
         videoChatService.show();
         videoChatService.connect();
+        $scope.video = true;
     };
+
+    $scope.disconnect = function() {
+        videoChatService.hide();
+        videoChatService.disconnect();
+        $scope.video = false;
+    }
 });
