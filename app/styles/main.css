@@ -52,6 +52,12 @@ audio {
 #user_list li {
     line-height: 15px;
 }
+
+.menu {
+    padding: 0;
+    list-style-type: none;
+}
+
 .modal {
   display: table;
   height: 0;

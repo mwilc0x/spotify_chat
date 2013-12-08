@@ -45,8 +45,10 @@
                 <li class="list-group-item" ng-repeat="user in current_users.users">{{user.name}}</li>
             </ul>
         </div>
-        <a class="change-username" ng-click="open()">Change Username</a>
-        <a class="video-chat" ng-controller="videoChat" ng-show="!video" ng-click="connect()">Enable Video Chat</a>
+        <ul class="menu">
+            <li><a class="change-username" ng-click="open()">Change Username</a></li>
+            <li><a class="video-chat" ng-controller="videoChat" ng-show="!video" ng-click="connect()">Enable Video Chat</a></li>
+        </ul>
         <media-player title="{{currentSong.title}}" src="{{currentSong.url}}"/>
     </div>
 </div>
