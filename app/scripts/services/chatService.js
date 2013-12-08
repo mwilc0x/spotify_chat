@@ -1,12 +1,14 @@
 app.service('chatService', function ($rootScope, $location) {
 
-    var url = ['ws://', $location.host(), ':', $location.port()].join('');
+    var url = ['http://', $location.host(), ':', $location.port()].join('');
     console.log('Url: ', url)
-    var ws = new WebSocket(url);
+    //var ws = new WebSocket(url);
+    var socket = io.connect(url);
 
     // messages from node server
-    ws.onmessage = function (event) {
-        var server_response = JSON.parse(event.data);
+    //ws.onmessage = function (event) {
+    socket.on('message', function (event) {
+        var server_response = JSON.parse(event);
         if (server_response != null && server_response.data != null) {
             switch (server_response.data) {
                 case "user-list": // users in chat room
@@ -35,11 +37,12 @@ app.service('chatService', function ($rootScope, $location) {
                     break;
             }
         }
-    };
+    });
 
     function send(message) {
         $rootScope.$broadcast('sending', message);
-        ws.send(message);
+        //ws.send(message);
+        socket.emit('message', message);
     }
 
     function scrollDown() {
