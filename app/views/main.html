@@ -49,7 +49,7 @@
             <li><a class="change-username" ng-click="open()">Change Username</a></li>
             <div ng-controller="videoChat">
                 <li><a class="video-chat" ng-show="!video" ng-click="connect()">Enable Video Chat</a></li>
-                <li><a class="video-chat" ng-show="video">Disable Video Chat</a></li>
+                <li><a class="video-chat" ng-show="video" ng-click="disconnect()">Disable Video Chat</a></li>
             </div>
         </ul>
         <media-player title="{{currentSong.title}}" src="{{currentSong.url}}"/>
