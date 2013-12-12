@@ -20,8 +20,8 @@
                 </div>
             </form>
         </div>
-        <div id="videos" ng-controller="videoChat" ng-include src="template.url">
-        </div>
+        <!--<div ng-controller="videoChat" ng-include src="template.url"></div>-->
+        <div ng-controller="videoChat" id="videos-container"></div>
     </div>
     <div class="full-screen col-lg-2">
         <div id="user-list">
@@ -33,7 +33,7 @@
         <ul class="menu">
             <li><a class="change-username" ng-click="open()">Change Username</a></li>
             <div ng-controller="videoChat">
-                <li><a class="video-chat" ng-show="!video" ng-click="connect()">Enable Video Chat</a></li>
+                <li><a class="video-chat" ng-show="!video" ng-click="connect('test')">Enable Video Chat</a></li>
                 <li><a class="video-chat" ng-show="video" ng-click="disconnect()">Disable Video Chat</a></li>
             </div>
         </ul>
