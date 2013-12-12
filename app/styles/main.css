@@ -116,6 +116,7 @@ a.change-username:hover, a.video-chat:hover {
     width: 700px;
 }
 
-#selfVideo, #callerVideo {
-    height: 210px;
+video {
+    height: 200px;
+    margin-top:20px;
 }
