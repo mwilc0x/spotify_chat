@@ -2,11 +2,10 @@ app.service('chatService', function ($rootScope, $location) {
 
     var url = ['http://', $location.host(), ':', $location.port()].join('');
     console.log('Url: ', url)
-    //var ws = new WebSocket(url);
+
     var socket = io.connect(url);
 
     // messages from node server
-    //ws.onmessage = function (event) {
     socket.on('message', function (event) {
         var server_response = JSON.parse(event);
         if (server_response != null && server_response.data != null) {
@@ -41,7 +40,6 @@ app.service('chatService', function ($rootScope, $location) {
 
     function send(message) {
         $rootScope.$broadcast('sending', message);
-        //ws.send(message);
         socket.emit('message', message);
     }
 
