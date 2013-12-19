@@ -1,0 +1,70 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Chat</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+<!--
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+-->
+
+    <link rel="stylesheet" href="styles/99ff2a63.main.css">
+</head>
+<body data-ng-init="init()">
+    <!--[if lt IE 7]>
+    <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div class="full-screen" ng-view=""></div>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+        var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src='//www.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+
+    <script src="bower_components/jquery/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="scripts/afc71b74.ui-bootstrap-tpls-0.6.0.js"></script>
+    <script src="bower_components/angular-ui-utils/modules/event/event.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&callback=onGoogleReady"></script>
+    <script src="bower_components/angular-ui-map/src/map.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="scripts/73fde960.app.js"></script>
+    <script src="scripts/780337af.PeerConnection.js"></script>
+    <script src="scripts/controllers/09ddfd3f.modal.js"></script>
+    <script src="scripts/controllers/77992c73.main.js"></script>
+    <script src="scripts/controllers/05d0dc86.googleMaps.js"></script>
+    <script src="scripts/controllers/642603af.videoChat.js"></script>
+    <script src="scripts/directives/824675ad.chatlog.js"></script>
+    <script src="scripts/directives/4cc27dd3.autoFocus.js"></script>
+    <script src="scripts/directives/01cc0f02.mediaPlayer.js"></script>
+    <script src="scripts/directives/e41f7d16.embedVideo.js"></script>
+    <script src="scripts/directives/fb6d29de.embedMap.js"></script>
+    <script src="scripts/services/5e492d2d.messageType.js"></script>
+    <script src="scripts/services/cd95f89d.audio.js"></script>
+    <script src="scripts/services/77a8196a.chatService.js"></script>
+    <script src="scripts/services/c50c92f7.maps.js"></script>
+    <script src="scripts/services/581beda6.videoChatService.js"></script>
+    <script src="scripts/77cf58e8.bootstrap.js"></script>
+    <script src="scripts/560843ac.socket.io.js"></script>
+    <script src="scripts/e45e8b6f.test.js"></script>
+</body>
+</html>
