@@ -58,7 +58,6 @@ io.sockets.on('connection', function(socket) {
         switch(message.data) {
             case "song-info":
                 spotify.getURI(message.text, message, function(track) {
-                    //wss.broadcast(track);
                     io.sockets.emit("message", track);
                 });
 
