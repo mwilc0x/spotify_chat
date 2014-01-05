@@ -17,7 +17,6 @@ app.controller('videoChat', function videoChat($scope, videoChatService) {
 
     $scope.disconnect = function() {
         videoChatService.hide();
-        //videoChatService.disconnect();
         $scope.video = false;
     }
 });
